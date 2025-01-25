@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		6319B37B2D4452D400ABD594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6319B35D2D4452D200ABD594 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6319B3642D4452D200ABD594;
+			remoteInfo = DesafioGloboplayCelsos;
+		};
+		6319B3852D4452D400ABD594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6319B35D2D4452D200ABD594 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6319B3642D4452D200ABD594;
+			remoteInfo = DesafioGloboplayCelsos;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6319B3652D4452D200ABD594 /* DesafioGloboplayCelsos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioGloboplayCelsos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6319B37A2D4452D400ABD594 /* DesafioGloboplayCelsosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesafioGloboplayCelsosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6319B3842D4452D400ABD594 /* DesafioGloboplayCelsosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesafioGloboplayCelsosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6319B39C2D44A53F00ABD594 /* Exceptions for "DesafioGloboplayCelsos" folder in "DesafioGloboplayCelsos" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6319B3642D4452D200ABD594 /* DesafioGloboplayCelsos */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6319B3672D4452D200ABD594 /* DesafioGloboplayCelsos */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6319B39C2D44A53F00ABD594 /* Exceptions for "DesafioGloboplayCelsos" folder in "DesafioGloboplayCelsos" target */,
+			);
+			path = DesafioGloboplayCelsos;
+			sourceTree = "<group>";
+		};
+		6319B37D2D4452D400ABD594 /* DesafioGloboplayCelsosTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DesafioGloboplayCelsosTests;
+			sourceTree = "<group>";
+		};
+		6319B3872D4452D400ABD594 /* DesafioGloboplayCelsosUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DesafioGloboplayCelsosUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6319B3622D4452D200ABD594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6319B3772D4452D400ABD594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6319B3812D4452D400ABD594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6319B35C2D4452D200ABD594 = {
+			isa = PBXGroup;
+			children = (
+				6319B3672D4452D200ABD594 /* DesafioGloboplayCelsos */,
+				6319B37D2D4452D400ABD594 /* DesafioGloboplayCelsosTests */,
+				6319B3872D4452D400ABD594 /* DesafioGloboplayCelsosUITests */,
+				6319B3662D4452D200ABD594 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6319B3662D4452D200ABD594 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6319B3652D4452D200ABD594 /* DesafioGloboplayCelsos.app */,
+				6319B37A2D4452D400ABD594 /* DesafioGloboplayCelsosTests.xctest */,
+				6319B3842D4452D400ABD594 /* DesafioGloboplayCelsosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6319B3642D4452D200ABD594 /* DesafioGloboplayCelsos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6319B38E2D4452D400ABD594 /* Build configuration list for PBXNativeTarget "DesafioGloboplayCelsos" */;
+			buildPhases = (
+				6319B3612D4452D200ABD594 /* Sources */,
+				6319B3622D4452D200ABD594 /* Frameworks */,
+				6319B3632D4452D200ABD594 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6319B3672D4452D200ABD594 /* DesafioGloboplayCelsos */,
+			);
+			name = DesafioGloboplayCelsos;
+			packageProductDependencies = (
+			);
+			productName = DesafioGloboplayCelsos;
+			productReference = 6319B3652D4452D200ABD594 /* DesafioGloboplayCelsos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6319B3792D4452D400ABD594 /* DesafioGloboplayCelsosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6319B3912D4452D400ABD594 /* Build configuration list for PBXNativeTarget "DesafioGloboplayCelsosTests" */;
+			buildPhases = (
+				6319B3762D4452D400ABD594 /* Sources */,
+				6319B3772D4452D400ABD594 /* Frameworks */,
+				6319B3782D4452D400ABD594 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6319B37C2D4452D400ABD594 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6319B37D2D4452D400ABD594 /* DesafioGloboplayCelsosTests */,
+			);
+			name = DesafioGloboplayCelsosTests;
+			packageProductDependencies = (
+			);
+			productName = DesafioGloboplayCelsosTests;
+			productReference = 6319B37A2D4452D400ABD594 /* DesafioGloboplayCelsosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6319B3832D4452D400ABD594 /* DesafioGloboplayCelsosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6319B3942D4452D400ABD594 /* Build configuration list for PBXNativeTarget "DesafioGloboplayCelsosUITests" */;
+			buildPhases = (
+				6319B3802D4452D400ABD594 /* Sources */,
+				6319B3812D4452D400ABD594 /* Frameworks */,
+				6319B3822D4452D400ABD594 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6319B3862D4452D400ABD594 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6319B3872D4452D400ABD594 /* DesafioGloboplayCelsosUITests */,
+			);
+			name = DesafioGloboplayCelsosUITests;
+			packageProductDependencies = (
+			);
+			productName = DesafioGloboplayCelsosUITests;
+			productReference = 6319B3842D4452D400ABD594 /* DesafioGloboplayCelsosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6319B35D2D4452D200ABD594 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					6319B3642D4452D200ABD594 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					6319B3792D4452D400ABD594 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6319B3642D4452D200ABD594;
+					};
+					6319B3832D4452D400ABD594 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6319B3642D4452D200ABD594;
+					};
+				};
+			};
+			buildConfigurationList = 6319B3602D4452D200ABD594 /* Build configuration list for PBXProject "DesafioGloboplayCelsos" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6319B35C2D4452D200ABD594;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6319B3662D4452D200ABD594 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6319B3642D4452D200ABD594 /* DesafioGloboplayCelsos */,
+				6319B3792D4452D400ABD594 /* DesafioGloboplayCelsosTests */,
+				6319B3832D4452D400ABD594 /* DesafioGloboplayCelsosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6319B3632D4452D200ABD594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6319B3782D4452D400ABD594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6319B3822D4452D400ABD594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6319B3612D4452D200ABD594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6319B3762D4452D400ABD594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6319B3802D4452D400ABD594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6319B37C2D4452D400ABD594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6319B3642D4452D200ABD594 /* DesafioGloboplayCelsos */;
+			targetProxy = 6319B37B2D4452D400ABD594 /* PBXContainerItemProxy */;
+		};
+		6319B3862D4452D400ABD594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6319B3642D4452D200ABD594 /* DesafioGloboplayCelsos */;
+			targetProxy = 6319B3852D4452D400ABD594 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6319B38C2D4452D400ABD594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6319B38D2D4452D400ABD594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6319B38F2D4452D400ABD594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DesafioGloboplayCelsos/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DesafioGloboplayCelsos/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Globo.DesafioGloboplayCelsos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6319B3902D4452D400ABD594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DesafioGloboplayCelsos/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DesafioGloboplayCelsos/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Globo.DesafioGloboplayCelsos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6319B3922D4452D400ABD594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Globo.DesafioGloboplayCelsosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DesafioGloboplayCelsos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DesafioGloboplayCelsos";
+			};
+			name = Debug;
+		};
+		6319B3932D4452D400ABD594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Globo.DesafioGloboplayCelsosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DesafioGloboplayCelsos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DesafioGloboplayCelsos";
+			};
+			name = Release;
+		};
+		6319B3952D4452D400ABD594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Globo.DesafioGloboplayCelsosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DesafioGloboplayCelsos;
+			};
+			name = Debug;
+		};
+		6319B3962D4452D400ABD594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Globo.DesafioGloboplayCelsosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DesafioGloboplayCelsos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6319B3602D4452D200ABD594 /* Build configuration list for PBXProject "DesafioGloboplayCelsos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6319B38C2D4452D400ABD594 /* Debug */,
+				6319B38D2D4452D400ABD594 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6319B38E2D4452D400ABD594 /* Build configuration list for PBXNativeTarget "DesafioGloboplayCelsos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6319B38F2D4452D400ABD594 /* Debug */,
+				6319B3902D4452D400ABD594 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6319B3912D4452D400ABD594 /* Build configuration list for PBXNativeTarget "DesafioGloboplayCelsosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6319B3922D4452D400ABD594 /* Debug */,
+				6319B3932D4452D400ABD594 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6319B3942D4452D400ABD594 /* Build configuration list for PBXNativeTarget "DesafioGloboplayCelsosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6319B3952D4452D400ABD594 /* Debug */,
+				6319B3962D4452D400ABD594 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6319B35D2D4452D200ABD594 /* Project object */;
+}
