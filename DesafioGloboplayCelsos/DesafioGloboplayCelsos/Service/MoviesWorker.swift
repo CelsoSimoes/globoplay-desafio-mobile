@@ -9,7 +9,7 @@ import Foundation
 
 protocol MoviesWorkerProtocol {
     func getPopularMovies() async -> Result<PopularMoviesData, Error>
-    func getTopRatedMovies()
+    func getTopRatedMovies() async -> Result<PopularMoviesData, Error> 
     func getUpcomingMovies()
     func getMovieDetails(movieId: String)
 }
@@ -65,8 +65,23 @@ class MoviesWorker: MoviesWorkerProtocol {
         }
     }
     
-    func getTopRatedMovies() {
+    func getTopRatedMovies() async -> Result<PopularMoviesData, Error> {
         
+        let request = buildRequest(movieListCategory: .topRated)
+        
+        switch request {
+        case .failure(let error):
+            return .failure(error)
+            
+        case .success(let request):
+            do {
+                let (data, _) = try await URLSession.shared.data(for: request)
+                let movieData = try JSONDecoder().decode(PopularMoviesData.self, from: data)
+                return .success(movieData)
+            } catch {
+                return .failure(error)
+            }
+        }
     }
     
     func getUpcomingMovies() {

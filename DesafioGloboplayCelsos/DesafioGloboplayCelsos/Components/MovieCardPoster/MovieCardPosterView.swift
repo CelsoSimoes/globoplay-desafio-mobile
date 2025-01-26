@@ -17,7 +17,7 @@ struct MovieCardPosterView: View {
             AsyncImage(url: moviePosterPath) { phase in
                 if let image = phase.image {
                     image.resizable()
-                         .aspectRatio(contentMode: .fit)
+                         .aspectRatio(contentMode: .fill)
                 } else if phase.error != nil {
                     Image(systemName: "questionmark.diamond")
                         .imageScale(.large)
@@ -26,7 +26,7 @@ struct MovieCardPosterView: View {
                 }
             }
         }
-        .frame(width: 200, height: 300)
+        .frame(width: 160, height: 230)
         .cornerRadius(4)
     }
 }
