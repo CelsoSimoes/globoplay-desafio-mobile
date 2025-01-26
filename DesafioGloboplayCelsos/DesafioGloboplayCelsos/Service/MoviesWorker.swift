@@ -11,17 +11,20 @@ protocol MoviesWorkerProtocol {
     func getPopularMovies() async -> Result<PopularMoviesData, Error>
     func getTopRatedMovies() async -> Result<PopularMoviesData, Error> 
     func getUpcomingMovies()
-    func getMovieDetails(movieId: String)
+    func getMovieDetails(movieId: String) async -> Result<MovieDetailsData, Error>
 }
 
 
 class MoviesWorker: MoviesWorkerProtocol {
     
-    private func buildRequest(movieListCategory: RequestCategories) -> Result<URLRequest, Error> {
+    private let movieRequestBaseURL = "https://api.themoviedb.org/3/movie/"
+    private let movieDetailsRequestBaseURL = "https://api.themoviedb.org/3/movie/939243"
+    
+    private func buildRequest(endpointValue: String) -> Result<URLRequest, Error> {
         
         // TODO: Criar struct de erros
-        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieListCategory.rawValue)") else {
-            return .failure(NSError(domain: "MoviesWorkerError", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Invalid URL for category \(movieListCategory.rawValue)"]))
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpointValue)") else {
+            return .failure(NSError(domain: "MoviesWorkerError", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Invalid URL for category \(endpointValue)"]))
         }
         
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
@@ -48,7 +51,7 @@ class MoviesWorker: MoviesWorkerProtocol {
     
     func getPopularMovies() async -> Result<PopularMoviesData, Error> {
         
-        let request = buildRequest(movieListCategory: .popular)
+        let request = buildRequest(endpointValue: RequestCategories.popular.rawValue)
         
         switch request {
         case .failure(let error):
@@ -67,7 +70,7 @@ class MoviesWorker: MoviesWorkerProtocol {
     
     func getTopRatedMovies() async -> Result<PopularMoviesData, Error> {
         
-        let request = buildRequest(movieListCategory: .topRated)
+        let request = buildRequest(endpointValue: RequestCategories.topRated.rawValue)
         
         switch request {
         case .failure(let error):
@@ -88,8 +91,23 @@ class MoviesWorker: MoviesWorkerProtocol {
         
     }
     
-    func getMovieDetails(movieId: String) {
+    func getMovieDetails(movieId: String) async -> Result<MovieDetailsData, Error>  {
+        let endpointValue = "details"
+        let request = buildRequest(endpointValue: endpointValue)
         
+        switch request {
+        case .failure(let error):
+            return .failure(error)
+            
+        case .success(let request):
+            do {
+                let (data, _) = try await URLSession.shared.data(for: request)
+                let movieData = try JSONDecoder().decode(MovieDetailsData.self, from: data)
+                return .success(movieData)
+            } catch {
+                return .failure(error)
+            }
+        }
     }
     
     
