@@ -34,7 +34,7 @@ class ImageWorker: ObservableObject {
             }
         } catch {
             self.error = "Erro ao carregar a imagem: \(error.localizedDescription)"
-        }git commit -m "Adicionando ImageWorker para baixar posteres"
+        }
         
         isLoading = false
     }
