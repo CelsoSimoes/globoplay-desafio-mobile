@@ -1,5 +1,5 @@
 //
-//  TrailerButton.swift
+//  MyListButton.swift
 //  DesafioGloboplayCelsos
 //
 //  Created by Celso Junio Simões de Oliveira Santos on 26/01/25.
@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct TrailerButton: View {
+struct MyListButton: View {
     var body: some View {
         ZStack {
 
-            Color.white
+            Color.black
             
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.black, lineWidth: 1)
+                .stroke(Color.white.opacity(0.85), lineWidth: 1)
             
             HStack(alignment: .center, spacing: 12){
-                Image(systemName: "play.fill")
+                Image(systemName: "star.fill")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(.black.opacity(0.6))
+                    .foregroundColor(.white.opacity(0.85))
                     .frame(width: 20, height: 20)
-                Text("Trailer")
-                    .foregroundColor(.black.opacity(0.6))
+                Text("Minha Lista")
+                    .foregroundColor(.white.opacity(0.85))
                     .font(.title3)
                     .fontWeight(.bold)
             }
@@ -33,5 +33,5 @@ struct TrailerButton: View {
 }
 
 #Preview {
-    TrailerButton()
+    MyListButton()
 }

@@ -27,7 +27,7 @@ enum RequestCategories: String {
 struct MovieData: Identifiable, Codable, Equatable {
 
     // Ref link: https://developer.themoviedb.org/docs/image-basics
-    private let posterBaseURL: String = "https://image.tmdb.org/t/p/w500"
+    private let imagesBaseURL: String = "https://image.tmdb.org/t/p/w500"
     
     let id: Int?
     let title: String?
@@ -41,10 +41,17 @@ struct MovieData: Identifiable, Codable, Equatable {
     let voteCount: Int?
     let adult: Bool?
     let genreIds: [Int]?
-    
+
+    var backdropURL: URL? {
+        guard let backdropPath = backdropPath,
+              let url = URL(string: imagesBaseURL + backdropPath)
+        else { return nil }
+        return url
+    }
+
     var posterURL: URL? {
         guard let posterPath = posterPath,
-              let url = URL(string: posterBaseURL + posterPath)
+              let url = URL(string: imagesBaseURL + posterPath)
         else { return nil }
         return url
     }

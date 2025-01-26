@@ -8,6 +8,10 @@
 import Foundation
 
 struct MovieDetailsData: Identifiable, Codable, Equatable {
+    
+    // Ref link: https://developer.themoviedb.org/docs/image-basics
+    private let imagesBaseURL: String = "https://image.tmdb.org/t/p/w500"
+    
     let id: Int
     let title: String
     let originalTitle: String
@@ -31,6 +35,20 @@ struct MovieDetailsData: Identifiable, Codable, Equatable {
     let productionCountries: [ProductionCountry]
     let genres: [Genre]
     let belongsToCollection: Collection?
+    
+    var backdropURL: URL? {
+        guard let backdropPath = backdropPath,
+              let url = URL(string: imagesBaseURL + backdropPath)
+        else { return nil }
+        return url
+    }
+
+    var posterURL: URL? {
+        guard let posterPath = posterPath,
+              let url = URL(string: imagesBaseURL + posterPath)
+        else { return nil }
+        return url
+    }
     
     enum CodingKeys: String, CodingKey {
         case id
