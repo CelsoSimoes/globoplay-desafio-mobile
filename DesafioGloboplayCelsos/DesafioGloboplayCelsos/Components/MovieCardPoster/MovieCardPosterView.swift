@@ -19,8 +19,17 @@ struct MovieCardPosterView: View {
                     image.resizable()
                          .aspectRatio(contentMode: .fill)
                 } else if phase.error != nil {
-                    Image(systemName: "questionmark.diamond")
-                        .imageScale(.large)
+
+                    VStack {
+                        Image(systemName: "questionmark.diamond")
+                            .imageScale(.large)
+                            .foregroundColor(.white)
+                        Text("Ops! Imagem não encontrada")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding()
+                    }
                 } else {
                     ProgressView()
                 }
