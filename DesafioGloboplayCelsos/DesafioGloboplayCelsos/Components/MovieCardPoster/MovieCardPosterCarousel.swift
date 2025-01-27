@@ -25,6 +25,7 @@ struct MovieCardPosterCarousel: View {
                     ForEach(self.moviesDatas) { movieData in
                         NavigationLink(destination: HighlightsView(movieId: movieData.id ?? 0)) {
                             MovieCardPosterView(moviePosterPath: movieData.posterURL)
+                                .frame(width: 160, height: 230)
                         }
                         .padding(.leading, movieData.id == self.moviesDatas.first?.id ? 16 : 0)
                         .padding(.trailing, movieData.id == self.moviesDatas.last?.id ? 16 : 0)

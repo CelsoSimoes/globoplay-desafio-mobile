@@ -34,6 +34,7 @@ struct HighlightsView: View {
                     VStack(spacing: 16) {
                         
                         MovieCardPosterView(moviePosterPath: movieDetailsData.posterURL)
+                            .frame(width: 160, height: 230)
                         
                         Text("\(movieDetailsData.title)")
                             .font(.title)

@@ -26,8 +26,6 @@ struct MovieCardPosterView: View {
                 }
             }
         }
-        .frame(width: 160, height: 230)
-        .cornerRadius(4)
     }
 }
 
