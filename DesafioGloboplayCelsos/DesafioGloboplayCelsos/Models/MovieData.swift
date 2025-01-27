@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct PopularMoviesData: Codable, Equatable {
+struct MoviesListData: Codable, Equatable {
+    let dates: Dates?
     let page: Int?
     let results: [MovieData]?
     
     enum CodingKeys: String, CodingKey {
+        case dates
         case page
         case results
     }
@@ -22,6 +24,16 @@ enum RequestCategories: String {
     case upcoming = "upcoming"
     case nowPlaying = "now_playing"
     case topRated = "top_rated"
+}
+
+struct Dates: Codable, Equatable {
+    let maximum: String
+    let minimum: String
+    
+    enum CodingKeys: String, CodingKey {
+        case maximum
+        case minimum
+    }
 }
 
 struct MovieData: Identifiable, Codable, Equatable {

@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
     @State private var popularMoviesDatas: [MovieData] = []
     @State private var topRatedMoviesDatas: [MovieData] = []
+    @State private var upcomingMoviesDatas: [MovieData] = []
+    @State private var nowPlayingMoviesDatas: [MovieData] = []
     
     var body: some View {
         NavigationView { // Adicione o NavigationView aqui
@@ -31,15 +33,17 @@ struct HomeView: View {
                     MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
                                             moviesDatas: topRatedMoviesDatas)
                     
-                    MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
-                                            moviesDatas: topRatedMoviesDatas)
+                    MovieCardPosterCarousel(carouselTitle: "Em Breve",
+                                            moviesDatas: upcomingMoviesDatas)
                     
-                    MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
-                                            moviesDatas: topRatedMoviesDatas)
+                    MovieCardPosterCarousel(carouselTitle: "Agora nos cinemas",
+                                            moviesDatas: nowPlayingMoviesDatas)
                 }
                 .onAppear {
-                    loadPopularMovies()
-                    loadTopRatedMovies()
+                    loadMovieListWithCategory(.popular)
+                    loadMovieListWithCategory(.topRated)
+                    loadMovieListWithCategory(.upcoming)
+                    loadMovieListWithCategory(.nowPlaying)
                 }
             }
             .background(Color(red: 29/255, green: 29/255, blue: 29/255))
@@ -47,26 +51,22 @@ struct HomeView: View {
         }
     }
     
-    private func loadPopularMovies() {
+    private func loadMovieListWithCategory(_ listCategory: RequestCategories) {
         Task {
-            let result = await MoviesWorker().getPopularMovies()
+            let result = await MoviesWorker().getMoviesList(listCategory)
             switch result {
             case .success(let moviesDatas):
                 guard let moviesDatasResults = moviesDatas.results else { return }
-                popularMoviesDatas = moviesDatasResults
-            case .failure(let error):
-                print("Error retrieving movies: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    private func loadTopRatedMovies() {
-        Task {
-            let result = await MoviesWorker().getTopRatedMovies()
-            switch result {
-            case .success(let moviesDatas):
-                guard let moviesDatasResults = moviesDatas.results else { return }
-                topRatedMoviesDatas = moviesDatasResults
+                switch listCategory {
+                case .popular:
+                    popularMoviesDatas = moviesDatasResults
+                case .topRated:
+                    topRatedMoviesDatas = moviesDatasResults
+                case .upcoming:
+                    upcomingMoviesDatas = moviesDatasResults
+                case .nowPlaying:
+                    nowPlayingMoviesDatas = moviesDatasResults
+                }
             case .failure(let error):
                 print("Error retrieving movies: \(error.localizedDescription)")
             }
