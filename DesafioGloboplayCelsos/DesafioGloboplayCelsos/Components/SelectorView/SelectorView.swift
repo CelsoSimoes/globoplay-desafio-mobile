@@ -41,7 +41,7 @@ struct SelectionView: View {
                 .fill(Color.white)
                 .frame(width: selectedOption == "Relacionados" ? 100 : 65,
                        height: 3)
-                .offset(x: selectedOption == "Relacionados" ? -55 : 70)
+                .offset(x: selectedOption == "Relacionados" ? -55 : 75)
                 .animation(.easeInOut, value: selectedOption)
         }
     }

@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct HighlightsDetailsView: View {
-    var movieDetailsData: MovieDetailsData
+    @StateObject private var viewModel: HighlightsDetailsViewModel
+
+    init(movieDetailsData: MovieDetailsData) {
+        _viewModel = StateObject(wrappedValue: HighlightsDetailsViewModel(movieDetailsData: movieDetailsData))
+    }
+
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false)
-        {
-            
+        ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 20) {
                 Text("Ficha Técnica: ")
                     .font(.title2)
@@ -20,13 +23,12 @@ struct HighlightsDetailsView: View {
                     .foregroundColor(.white)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    DetailsTextCell(title: "Título original", text: movieDetailsData.originalTitle)
-                    DetailsTextCell(title: "Gêneros", text: getGenres(genres: movieDetailsData.genres))
-                    DetailsTextCell(title: "Data de lançamento", text: movieDetailsData.releaseDate)
-                    DetailsTextCell(title: "Estúdios", text: getStudios(studios: movieDetailsData.productionCompanies))
-                    DetailsTextCell(title: "Elenco", text: movieDetailsData.originalTitle)
+                    DetailsTextCell(title: "Título original", text: viewModel.movieDetailsData.originalTitle)
+                    DetailsTextCell(title: "Gêneros", text: viewModel.getGenres(genres: viewModel.movieDetailsData.genres))
+                    DetailsTextCell(title: "Data de lançamento", text: viewModel.movieDetailsData.releaseDate)
+                    DetailsTextCell(title: "Estúdios", text: viewModel.getStudios(studios: viewModel.movieDetailsData.productionCompanies))
+                    DetailsTextCell(title: "Elenco", text: viewModel.movieDetailsData.originalTitle)
                 }
-                
             }
             .padding(.horizontal, 25)
             .padding(.vertical, 30)
@@ -35,28 +37,6 @@ struct HighlightsDetailsView: View {
         .background(Color(red: 31/255, green: 31/255, blue: 31/255))
         
     }
-    
-    private func getGenres(genres: [Genre]) -> String {
-        var allGenres = ""
-        for genre in genres {
-            allGenres += "\(genre.name), "
-        }
-        
-        if allGenres != "" { allGenres.removeLast(2) }
-        return allGenres
-    }
-    
-    private func getStudios(studios: [ProductionCompany]) -> String {
-        var allStudios = ""
-        for studio in studios {
-            allStudios += "\(studio.name), "
-        }
-        
-        if allStudios != "" { allStudios.removeLast(2) }
-        return allStudios
-    }
-    
-    
 }
 
 #Preview {

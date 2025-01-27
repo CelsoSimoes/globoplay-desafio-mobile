@@ -10,38 +10,30 @@
 // - Limitar número de linhas de texto (APLICADA)
 
 import SwiftUI
-import CoreData
 
 struct HighlightsView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @State private var movieDetailsData: MovieDetailsData = MockedMovieDetailsData.emptyMock
-    @State var isFavorite = false
-    @State var isDetails = false
-    @State var movieTrailerKey = ""
-    var movieId: Int
-    
+    @StateObject private var viewModel: HighlightsViewModel
+
+    init(movieId: Int) {
+        _viewModel = StateObject(wrappedValue: HighlightsViewModel(movieId: movieId))
+    }
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .center, spacing: 0) {
-                
                 ZStack(alignment: .bottom) {
-                    
-                    MoviePosterBackground(moviePosterbackground: movieDetailsData.posterURL)
+                    MoviePosterBackground(moviePosterbackground: viewModel.movieDetailsData.posterURL)
                         .blur(radius: 3, opaque: false)
                         .frame(height: 700)
                     
-                    LinearGradient(gradient: Gradient(colors: [Color.black.opacity(2),
-                                                               Color.black.opacity(0.0)]),
-                                   startPoint: .bottom,
-                                   endPoint: .top)
+                    LinearGradient(gradient: Gradient(colors: [Color.black.opacity(2), Color.black.opacity(0.0)]), startPoint: .bottom, endPoint: .top)
                         .frame(height: 500)
                     
                     VStack(spacing: 16) {
-                        
-                        MovieCardPosterView(moviePosterPath: movieDetailsData.posterURL)
+                        MovieCardPosterView(moviePosterPath: viewModel.movieDetailsData.posterURL)
                             .frame(width: 160, height: 230)
                         
-                        Text("\(movieDetailsData.title)")
+                        Text("\(viewModel.movieDetailsData.title)")
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -52,26 +44,26 @@ struct HighlightsView: View {
                             .fontWeight(.regular)
                             .foregroundColor(Color(red: 133/255, green: 133/255, blue: 133/255))
                         
-                        Text("\(movieDetailsData.overview)")
+                        Text("\(viewModel.movieDetailsData.overview)")
                             .font(.headline)
                             .fontWeight(.regular)
                             .foregroundColor(Color.white.opacity(0.8))
                             .lineLimit(8)
                         
                         HStack(alignment: .center, spacing: 16) {
-                            NavigationLink(destination: YoutubePlayerView(movieTrailerKey: movieTrailerKey)) {
+                            NavigationLink(destination: YoutubePlayerView(movieTrailerKey: viewModel.movieTrailerKey)) {
                                 TrailerButton()
                                     .cornerRadius(8)
                             }
                             
                             Button(action: {
-                                if isFavorite {
-                                    deleteFromFavorites()
+                                if viewModel.isFavorite {
+                                    viewModel.deleteFromFavorites()
                                 } else {
-                                    saveInFavorites()
+                                    viewModel.saveInFavorites()
                                 }
                             }) {
-                                MyListButton(isFavorited: self.$isFavorite)
+                                MyListButton(isFavorited: self.$viewModel.isFavorite)
                             }
                             .cornerRadius(8)
                         }
@@ -80,82 +72,30 @@ struct HighlightsView: View {
                 }
                 
                 Button(action: {
-                    isDetails.toggle()
+                    viewModel.isDetails.toggle()
                 }) {
-                    SelectionView(isDetails: self.$isDetails)
+                    SelectionView(isDetails: $viewModel.isDetails)
                         .padding(.top, 16)
                 }
                 .cornerRadius(8)
                 
-                if isDetails {
-                    NavigationView {
-                        HighlightsDetailsView(movieDetailsData: movieDetailsData)
-                    }
+                if viewModel.isDetails {
+                    HighlightsDetailsView(movieDetailsData: viewModel.movieDetailsData)
                 } else {
-                    HighlightsRecommendations(movieId: movieId)
+                    HighlightsRecommendations(movieId: viewModel.movieId)
                 }
                 
+                if let errorMessage = viewModel.errorMessage {
+                    ErrorView(message: errorMessage) {
+                        viewModel.loadMovieDetailsData()
+                    }
+                    .padding()
+                }
             }
             .background(Color.black)
         }
         .ignoresSafeArea(edges: .top)
         .background(Color(red: 31/255, green: 31/255, blue: 31/255))
-        .onAppear {
-            loadMovieDetailsData()
-            checkFavorited()
-            loadMovieTrailerKey()
-        }
-    }
-    
-    private func checkFavorited() {
-        let isSavedMovie = UserDefaultsWorker().fetchMovie(byId: movieId)
-        
-        if isSavedMovie != nil {
-            isFavorite = true
-        } else {
-            isFavorite = false
-        }
-    }
-    
-    private func loadMovieTrailerKey() {
-        Task {
-            let result = await MoviesWorker().getMovieTrailerKey(movieId: self.movieId)
-            switch result {
-            case .success(let trailerKey):
-                self.movieTrailerKey = trailerKey
-            case .failure(let error):
-                print("Error retrieving movies: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    private func saveInFavorites() {
-        guard let posterURL = movieDetailsData.posterURL else { return }
-        
-        let model = SavedMovies(id: movieId, posterURL: posterURL)
-        
-        let userDefaults = UserDefaultsWorker()
-        userDefaults.saveMovie(movie: model)
-        
-        isFavorite = true
-    }
-    
-    private func deleteFromFavorites() {
-        UserDefaultsWorker().deleteMovie(byId: movieId)
-        
-        isFavorite = false
-    }
-    
-    private func loadMovieDetailsData() {
-        Task {
-            let result = await MoviesWorker().getMovieDetails(movieId: self.movieId)
-            switch result {
-            case .success(let movieDetailsValues):
-                self.movieDetailsData = movieDetailsValues
-            case .failure(let error):
-                print("Error retrieving movies: \(error.localizedDescription)")
-            }
-        }
     }
 }
 

@@ -8,21 +8,29 @@
 import SwiftUI
 
 struct HighlightsRecommendations: View {
-    
-    private let viewTitle: String = "Minha Lista"
-    @State private var moviesRecomentationsData: [MovieData] = []
-    var movieId: Int
+    private let viewTitle: String = "Recomendações"
+    @StateObject private var viewModel: HighlightsRecommendationsViewModel
     
     private var columns: [GridItem] {
         [GridItem(.flexible()),
          GridItem(.flexible())]
     }
     
+    init(movieId: Int) {
+        _viewModel = StateObject(wrappedValue: HighlightsRecommendationsViewModel(movieId: movieId))
+    }
+    
     var body: some View {
-            VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 16) {
+            if let errorMessage = viewModel.errorMessage {
+                ErrorView(message: errorMessage) {
+                    viewModel.loadRecommendations()
+                }
+                .padding()
+            } else {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(self.moviesRecomentationsData) { movieData in
+                        ForEach(viewModel.moviesRecommendationsData) { movieData in
                             NavigationLink(destination: HighlightsView(movieId: movieData.id ?? 0)) {
                                 MovieCardPosterView(moviePosterPath: movieData.posterURL)
                             }
@@ -31,24 +39,8 @@ struct HighlightsRecommendations: View {
                     .padding()
                 }
             }
-            .background(Color(red: 31/255, green: 31/255, blue: 31/255))
-            .onAppear {
-                getRecommendations()
-            }
-    }
-    
-    private func getRecommendations() {
-        Task {
-            let result = await MoviesWorker().getMoviesRecomendations(movieId: self.movieId)
-            switch result {
-            case .success(let moviesDatas):
-                guard let moviesDatasResults = moviesDatas.results else { return }
-                moviesRecomentationsData = moviesDatasResults
-                
-            case .failure(let error):
-                print("Error retrieving movies: \(error.localizedDescription)")
-            }
         }
+        .background(Color(red: 31/255, green: 31/255, blue: 31/255))
     }
 }
 
