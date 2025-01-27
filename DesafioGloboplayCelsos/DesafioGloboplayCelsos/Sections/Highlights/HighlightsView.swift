@@ -10,9 +10,12 @@
 // - Limitar número de linhas de texto (APLICADA)
 
 import SwiftUI
+import CoreData
 
 struct HighlightsView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @State private var movieDetailsData: MovieDetailsData = MockedMovieDetailsData.emptyMock
+    @State var isFavorite = false
     var movieId: Int
     
     var body: some View {
@@ -57,8 +60,16 @@ struct HighlightsView: View {
                             TrailerButton()
                                 .cornerRadius(8)
                             
-                            MyListButton()
-                                .cornerRadius(8)
+                            Button(action: {
+                                if isFavorite {
+                                    deleteFromFavorites()
+                                } else {
+                                    saveInFavorites()
+                                }
+                            }) {
+                                MyListButton(isFavorited: self.$isFavorite)
+                            }
+                            .cornerRadius(8)
                         }
                     }
                     .padding(.horizontal)
@@ -73,7 +84,35 @@ struct HighlightsView: View {
         .background(Color(red: 31/255, green: 31/255, blue: 31/255))
         .onAppear {
             loadMovieDetailsData()
+            checkFavorited()
         }
+    }
+    
+    private func checkFavorited() {
+        let isSavedMovie = UserDefaultsWorker().fetchMovie(byId: movieId)
+        
+        if isSavedMovie != nil {
+            isFavorite = true
+        } else {
+            isFavorite = false
+        }
+    }
+    
+    private func saveInFavorites() {
+        guard let posterURL = movieDetailsData.posterURL else { return }
+        
+        let model = SavedMovies(id: movieId, posterURL: posterURL)
+        
+        let userDefaults = UserDefaultsWorker()
+        userDefaults.saveMovie(movie: model)
+        
+        isFavorite = true
+    }
+    
+    private func deleteFromFavorites() {
+        UserDefaultsWorker().deleteMovie(byId: movieId)
+        
+        isFavorite = false
     }
     
     private func loadMovieDetailsData() {

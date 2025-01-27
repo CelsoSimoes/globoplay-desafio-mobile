@@ -43,17 +43,6 @@ struct ContentView: View {
     }
 
     private func addItem() {
-        Task {
-            let result = await MoviesWorker().getPopularMovies()
-            switch result {
-            case .success(let movieData):
-                print("Movies retrieved: \(movieData)")
-            case .failure(let error):
-                print("Error retrieving movies: \(error.localizedDescription)")
-            }
-        }
-        
-        
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()

@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct MovieCardPosterGrid: View {
+struct MyListView: View {
     
     private let viewTitle: String = "Minha Lista"
-    let moviesDatas: [MovieData]
+    @State var favoriteMovies = UserDefaultsWorker().fetchMovies()
     
     private var columns: [GridItem] {
         [GridItem(.flexible()),
@@ -19,47 +19,56 @@ struct MovieCardPosterGrid: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text(viewTitle)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.white)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.black)
-            
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(self.moviesDatas) { movieData in
-                        NavigationLink(destination: HighlightsView(movieId: movieData.id ?? 0)) {
-                            MovieCardPosterView(moviePosterPath: movieData.posterURL)
-                        }
+        NavigationView {
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Text(viewTitle)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(.white)
+                    
+                    Spacer()
+                    
+                    Button(action: removeAllFavorites) {
+                        Image(systemName: "trash.fill")
+                            .renderingMode(.template)
+                            .foregroundColor(.white)
                     }
                 }
-                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.black)
+                
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(self.favoriteMovies) { movieData in
+                            NavigationLink(destination: HighlightsView(movieId: movieData.id)) {
+                                MovieCardPosterView(moviePosterPath: movieData.posterURL)
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                }
             }
+            .background(Color(red: 31/255, green: 31/255, blue: 31/255))
+            .onAppear {
+                updateFavoriteMovies()
+            }
+            
         }
-        .background(Color(red: 31/255, green: 31/255, blue: 31/255))
-        
     }
+    
+    private func removeAllFavorites() {
+        UserDefaultsWorker().clearAll()
+    }
+    
+    private func updateFavoriteMovies() {
+        favoriteMovies = UserDefaultsWorker().fetchMovies()
+    }
+    
+    
 }
 
 #Preview {
-    let mockMovieData = MockedMovieData().mock
-    let mockMovieData2 = MockedMovieData().mock2
-    let mockMovieData3 = MockedMovieData().mock3
-    let mockMovieData4 = MockedMovieData().mock4
-    let mockMovieData5 = MockedMovieData().mock5
-    let mockMovieData6 = MockedMovieData().mock6
-    let mockMovieData7 = MockedMovieData().mock7
-    MovieCardPosterGrid(moviesDatas: [mockMovieData,
-                                      mockMovieData2,
-                                      mockMovieData3,
-                                      mockMovieData4,
-                                      mockMovieData5,
-                                      mockMovieData6,
-                                      mockMovieData7,
-                                      mockMovieData])
+    MyListView()
 }
