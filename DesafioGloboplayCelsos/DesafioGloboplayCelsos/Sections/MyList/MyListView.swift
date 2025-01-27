@@ -10,7 +10,7 @@ import SwiftUI
 struct MyListView: View {
     
     private let viewTitle: String = "Minha Lista"
-    @State var favoriteMovies = UserDefaultsWorker().fetchMovies()
+    @StateObject private var viewModel = MyListViewModel()
     
     private var columns: [GridItem] {
         [GridItem(.flexible()),
@@ -30,7 +30,9 @@ struct MyListView: View {
                     
                     Spacer()
                     
-                    Button(action: removeAllFavorites) {
+                    Button(action: {
+                        viewModel.removeAllFavorites()
+                    }) {
                         Image(systemName: "trash.fill")
                             .renderingMode(.template)
                             .foregroundColor(.white)
@@ -41,7 +43,7 @@ struct MyListView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(self.favoriteMovies) { movieData in
+                        ForEach(viewModel.favoriteMovies) { movieData in
                             NavigationLink(destination: HighlightsView(movieId: movieData.id)) {
                                 MovieCardPosterView(moviePosterPath: movieData.posterURL)
                             }
@@ -52,21 +54,10 @@ struct MyListView: View {
             }
             .background(Color(red: 31/255, green: 31/255, blue: 31/255))
             .onAppear {
-                updateFavoriteMovies()
+                viewModel.loadFavoriteMovies()
             }
-            
         }
     }
-    
-    private func removeAllFavorites() {
-        UserDefaultsWorker().clearAll()
-    }
-    
-    private func updateFavoriteMovies() {
-        favoriteMovies = UserDefaultsWorker().fetchMovies()
-    }
-    
-    
 }
 
 #Preview {
