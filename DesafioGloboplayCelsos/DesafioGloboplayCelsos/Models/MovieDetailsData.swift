@@ -177,4 +177,6 @@ struct MockedMovieDetailsData {
         ],
         belongsToCollection: Collection(id: 720879, name: "Sonic: Coleção", posterPath: "/5Q47T9iOyjY5E9kmFjAIf49P1Gp.jpg", backdropPath: "/l5CIAdxVhhaUD3DaS4lP4AR2so9.jpg")
     )
+    
+    static let emptyMock = MovieDetailsData(id: 0, title: "", originalTitle: "", overview: "", releaseDate: "", runtime: 0, status: "", tagline: "", budget: 0, revenue: 0, popularity: 0, voteAverage: 0, voteCount: 0, adult: false, backdropPath: nil, posterPath: nil, homepage: nil, originalLanguage: "", spokenLanguages: [], productionCompanies: [], productionCountries: [], genres: [], belongsToCollection: nil)
 }

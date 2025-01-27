@@ -12,40 +12,39 @@ struct HomeView: View {
     @State private var topRatedMoviesDatas: [MovieData] = []
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false)
-        {
-            ZStack {
-                Text("CelsosPlay")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
+        NavigationView { // Adicione o NavigationView aqui
+            ScrollView(.vertical, showsIndicators: false) {
+                ZStack {
+                    Text("CelsosPlay")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                }
+                .padding(20)
+                .frame(maxWidth: .infinity, minHeight: 120, alignment: .bottom)
+                .background(Color.black)
+                
+                VStack(alignment: .center, spacing: 45) {
+                    MovieCardPosterCarousel(carouselTitle: "Populares",
+                                            moviesDatas: popularMoviesDatas)
+                    
+                    MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
+                                            moviesDatas: topRatedMoviesDatas)
+                    
+                    MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
+                                            moviesDatas: topRatedMoviesDatas)
+                    
+                    MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
+                                            moviesDatas: topRatedMoviesDatas)
+                }
+                .onAppear {
+                    loadPopularMovies()
+                    loadTopRatedMovies()
+                }
             }
-            .padding(20)
-            .frame(maxWidth: .infinity, minHeight: 120, alignment: .bottom)
-            .background(Color.black)
-            
-            VStack(alignment: .center, spacing: 45) {
-                
-                MovieCardPosterCarousel(carouselTitle: "Populares",
-                                        moviesDatas: popularMoviesDatas)
-                
-                MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
-                                        moviesDatas: topRatedMoviesDatas)
-                
-                MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
-                                        moviesDatas: topRatedMoviesDatas)
-                
-                MovieCardPosterCarousel(carouselTitle: "Bem avaliados",
-                                        moviesDatas: topRatedMoviesDatas)
-            }
-            .onAppear {
-                loadPopularMovies()
-                loadTopRatedMovies()
-            }
+            .background(Color(red: 29/255, green: 29/255, blue: 29/255))
+            .ignoresSafeArea(edges: .top)
         }
-        .background(Color(red: 29/255, green: 29/255, blue: 29/255))
-        .ignoresSafeArea(edges: .top)
-        
     }
     
     private func loadPopularMovies() {

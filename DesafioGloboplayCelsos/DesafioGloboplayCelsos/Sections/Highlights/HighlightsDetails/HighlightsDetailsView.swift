@@ -28,10 +28,10 @@ struct HighlightsDetailsView: View {
                 }
                 
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 25)
             .padding(.vertical, 30)
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(red: 31/255, green: 31/255, blue: 31/255))
         
     }

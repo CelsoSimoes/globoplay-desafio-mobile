@@ -20,12 +20,12 @@ struct TrailerButton: View {
                 Image(systemName: "play.fill")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(.black.opacity(0.6))
+                    .foregroundColor(.black.opacity(0.7))
                     .frame(width: 20, height: 20)
                 Text("Trailer")
                     .foregroundColor(.black.opacity(0.6))
                     .font(.title3)
-                    .fontWeight(.bold)
+                    .fontWeight(.heavy)
             }
         }
         .frame(height: 60)

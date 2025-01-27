@@ -11,7 +11,7 @@ protocol MoviesWorkerProtocol {
     func getPopularMovies() async -> Result<PopularMoviesData, Error>
     func getTopRatedMovies() async -> Result<PopularMoviesData, Error> 
     func getUpcomingMovies()
-    func getMovieDetails(movieId: String) async -> Result<MovieDetailsData, Error>
+    func getMovieDetails(movieId: Int) async -> Result<MovieDetailsData, Error>
 }
 
 
@@ -91,8 +91,8 @@ class MoviesWorker: MoviesWorkerProtocol {
         
     }
     
-    func getMovieDetails(movieId: String) async -> Result<MovieDetailsData, Error>  {
-        let endpointValue = "details"
+    func getMovieDetails(movieId: Int) async -> Result<MovieDetailsData, Error>  {
+        let endpointValue = "\(movieId)"
         let request = buildRequest(endpointValue: endpointValue)
         
         switch request {

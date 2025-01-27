@@ -23,10 +23,11 @@ struct MovieCardPosterCarousel: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .center, spacing: 16) {
                     ForEach(self.moviesDatas) { movieData in
-                        MovieCardPosterView(moviePosterPath: movieData.posterURL)
-                        // Só fica esquisito esse espaçamento por conta dos mocks iguais
-                            .padding(.leading, movieData.id == self.moviesDatas.first?.id ? 16 : 0)
-                            .padding(.trailing, movieData.id == self.moviesDatas.last?.id ? 16 : 0)
+                        NavigationLink(destination: HighlightsView(movieId: movieData.id ?? 0)) {
+                            MovieCardPosterView(moviePosterPath: movieData.posterURL)
+                        }
+                        .padding(.leading, movieData.id == self.moviesDatas.first?.id ? 16 : 0)
+                        .padding(.trailing, movieData.id == self.moviesDatas.last?.id ? 16 : 0)
                     }
                 }
             }
