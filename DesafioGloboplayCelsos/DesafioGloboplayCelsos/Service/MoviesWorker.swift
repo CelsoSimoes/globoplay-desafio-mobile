@@ -9,7 +9,9 @@ import Foundation
 
 protocol MoviesWorkerProtocol {
     func getMoviesList(_ movieListCategory: RequestCategories) async -> Result<MoviesListData, Error>
+    func getMoviesRecomendations(movieId: Int) async -> Result<MoviesListData, Error>
     func getMovieDetails(movieId: Int) async -> Result<MovieDetailsData, Error>
+    func getMovieTrailerKey(movieId: Int) async -> Result<String, Error>
 }
 
 
@@ -64,6 +66,24 @@ class MoviesWorker: MoviesWorkerProtocol {
         }
     }
     
+    func getMoviesRecomendations(movieId: Int) async -> Result<MoviesListData, Error> {
+        let request = buildRequest(endpointValue: "/\(movieId)/recommendations")
+        
+        switch request {
+        case .failure(let error):
+            return .failure(error)
+            
+        case .success(let request):
+            do {
+                let (data, _) = try await URLSession.shared.data(for: request)
+                let movieData = try JSONDecoder().decode(MoviesListData.self, from: data)
+                return .success(movieData)
+            } catch {
+                return .failure(error)
+            }
+        }
+    }
+    
     func getMovieDetails(movieId: Int) async -> Result<MovieDetailsData, Error>  {
         let endpointValue = "\(movieId)"
         let request = buildRequest(endpointValue: endpointValue)
@@ -77,6 +97,24 @@ class MoviesWorker: MoviesWorkerProtocol {
                 let (data, _) = try await URLSession.shared.data(for: request)
                 let movieData = try JSONDecoder().decode(MovieDetailsData.self, from: data)
                 return .success(movieData)
+            } catch {
+                return .failure(error)
+            }
+        }
+    }
+    
+    func getMovieTrailerKey(movieId: Int) async -> Result<String, Error> {
+        let request = buildRequest(endpointValue: "/\(movieId)/videos")
+        
+        switch request {
+        case .failure(let error):
+            return .failure(error)
+            
+        case .success(let request):
+            do {
+                let (data, _) = try await URLSession.shared.data(for: request)
+                let movieData = try JSONDecoder().decode(MovieTrailersData.self, from: data)
+                return .success(movieData.results.first?.key ?? "")
             } catch {
                 return .failure(error)
             }
