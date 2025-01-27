@@ -11,6 +11,7 @@ struct MyListView: View {
     
     private let viewTitle: String = "Minha Lista"
     @StateObject private var viewModel = MyListViewModel()
+//    @State var moviesData: [MovieDetailsData] = []
     
     private var columns: [GridItem] {
         [GridItem(.flexible()),
@@ -43,6 +44,7 @@ struct MyListView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
+//                        ForEach(moviesData) { movieData in
                         ForEach(viewModel.favoriteMovies) { movieData in
                             NavigationLink(destination: HighlightsView(movieId: movieData.id)) {
                                 MovieCardPosterView(moviePosterPath: movieData.posterURL)
@@ -55,9 +57,24 @@ struct MyListView: View {
             .background(Color(red: 31/255, green: 31/255, blue: 31/255))
             .onAppear {
                 viewModel.loadFavoriteMovies()
+//                loadPosters()
             }
         }
     }
+    
+//    private func loadPosters() {
+//        Task {
+//            for moviesIds in viewModel.favoriteMovies {
+//                let movieDetails = await MoviesWorker().getMovieDetails(movieId: moviesIds.id)
+//                switch movieDetails {
+//                case .success(let dataObtida):
+//                    moviesData.append(dataObtida)
+//                case .failure(let error):
+//                    print(error)
+//                }
+//            }
+//        }
+//    }
 }
 
 #Preview {
